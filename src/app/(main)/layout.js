@@ -22,7 +22,7 @@ export default function MainLayout({ children }) {
   const pathname = usePathname();
 
   return (
-    <div className="flex flex-col min-h-[100dvh]">
+    <div className="flex flex-col h-[100dvh] overflow-hidden">
       <div className="flex-1 overflow-y-auto">{children}</div>
 
       <nav className="border-t border-gray-200 bg-white flex justify-around py-2">
