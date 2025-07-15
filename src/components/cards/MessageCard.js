@@ -1,6 +1,6 @@
-'use client'
-import Image from 'next/image'
-import clsx from 'clsx'
+"use client";
+import Image from "next/image";
+import clsx from "clsx";
 
 export default function MessageCard({
   avatar,
@@ -8,7 +8,7 @@ export default function MessageCard({
   time,
   isOnline,
   isRead,
-  name = '',
+  name = "",
 }) {
   return (
     <div className="flex items-center justify-between border-b border-gray-100 py-3">
@@ -26,15 +26,17 @@ export default function MessageCard({
           {/* Online dot */}
           <span
             className={clsx(
-              'absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 border-white',
-              isOnline ? 'bg-green-500' : 'bg-gray-400'
+              "absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 border-white",
+              isOnline ? "bg-green-500" : "bg-gray-400",
             )}
           />
         </div>
 
         {/* Message Content */}
         <div>
-          {name && <div className="font-medium text-sm text-gray-800">{name}</div>}
+          {name && (
+            <div className="font-medium text-sm text-gray-800">{name}</div>
+          )}
           <div className="text-gray-700 text-sm">{message}</div>
         </div>
       </div>
@@ -47,5 +49,5 @@ export default function MessageCard({
         )}
       </div>
     </div>
-  )
+  );
 }

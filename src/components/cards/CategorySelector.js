@@ -1,11 +1,11 @@
-'use client'
-import Image from 'next/image'
+"use client";
+import Image from "next/image";
 
 const categories = [
-  { name: 'Rooms', image: '/room.png' },
-  { name: 'Food', image: '/food.png' },
-  { name: 'Tour Guide', image: '/tour.png' },
-]
+  { name: "Rooms", image: "/room.png" },
+  { name: "Food", image: "/food.png" },
+  { name: "Tour Guide", image: "/tour.png" },
+];
 
 export default function CategorySelector({ onSelect }) {
   return (
@@ -29,5 +29,5 @@ export default function CategorySelector({ onSelect }) {
         </button>
       ))}
     </div>
-  )
+  );
 }
