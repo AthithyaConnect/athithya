@@ -6,14 +6,17 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write ."
   },
   "dependencies": {
+    "@heroui/input-otp": "^2.1.22",
     "@heroui/react": "^2.8.0",
     "@heroui/system": "^2.4.19",
     "@heroui/theme": "^2.4.18",
     "framer-motion": "^12.23.5",
     "next": "15.4.1",
+    "phosphor-react": "^1.4.1",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },
