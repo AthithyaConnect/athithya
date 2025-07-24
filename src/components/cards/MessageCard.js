@@ -11,7 +11,7 @@ export default function MessageCard({
   name = "",
 }) {
   return (
-    <div className="flex items-center justify-between border-b border-gray-100 py-3">
+    <div className="flex items-center justify-between py-3 border-b border-gray-100">
       {/* Left Side */}
       <div className="flex items-center gap-3">
         {/* Avatar with online dot */}
@@ -21,7 +21,7 @@ export default function MessageCard({
             alt="avatar"
             width={48}
             height={48}
-            className="rounded-full object-cover"
+            className="object-cover rounded-full"
           />
           {/* Online dot */}
           <span
@@ -35,9 +35,9 @@ export default function MessageCard({
         {/* Message Content */}
         <div>
           {name && (
-            <div className="font-medium text-sm text-gray-800">{name}</div>
+            <div className="text-sm font-medium text-gray-800">{name}</div>
           )}
-          <div className="text-gray-700 text-sm">{message}</div>
+          <div className="text-sm text-gray-700">{message}</div>
         </div>
       </div>
 

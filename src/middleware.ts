@@ -7,7 +7,7 @@ export function middleware(request) {
   const otp = request.cookies.get("otp")?.value;
 
   const isProtected = url.pathname.startsWith("/u");
-  const isValid = otp === "1234";
+  const isValid = otp === "1874";
 
   if (isProtected && !isValid) {
     return NextResponse.redirect(new URL("/", request.url));

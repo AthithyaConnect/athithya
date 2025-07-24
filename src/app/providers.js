@@ -12,7 +12,7 @@ const Providers = ({ children }) => {
         <IconContext.Provider
           value={{
             color: "#101010",
-            size: 28,
+            size: 24,
             weight: "regular",
             mirrored: false,
             alt: "icon",

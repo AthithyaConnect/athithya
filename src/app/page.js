@@ -12,7 +12,7 @@ export default function OTPPage() {
   // if otp value is less than 4 characters, empty error
 
   const handleComplete = (value) => {
-    if (value !== "1234") {
+    if (value !== "1874") {
       setError("Invalid OTP");
       return;
     }
@@ -24,7 +24,8 @@ export default function OTPPage() {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen px-4">
-      <h1 className="text-xl font-semibold mb-6">Enter Access Code</h1>
+      <h1 className="mb-6 text-xl font-semibold">Welcome to Athithya</h1>
+       <h1 className="mb-6 text-xl font-semibold">Enter Access Code</h1>
 
       <InputOtp
         length={4}
@@ -34,12 +35,12 @@ export default function OTPPage() {
           setOtp(val);
           setError(null);
         }}
-        color="success"
+        color="default"
         onComplete={handleComplete}
         className={`w-fit max-w-xs ${error ? "border-red-500" : ""}`}
       />
 
-      {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+      {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
     </div>
   );
 }

@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import MessageCard from "@/components/cards/MessageCard";
 import SearchBar from "@/components/cards/SearchBar";
+import MessageCard from "@/components/cards/MessageCard";
 
 export default function InboxPage() {
   const [search, setSearch] = useState("");
-
+ 
   const messages = [
     {
       avatar: "https://randomuser.me/api/portraits/women/75.jpg",
@@ -47,12 +47,12 @@ export default function InboxPage() {
   );
 
   return (
-    <div className="min-h-screen bg-white px-4 py-6">
+    <div className="min-h-screen px-4 py-6 bg-white">
       {/* Title */}
-      <h1 className="text-xl font-semibold text-gray-900 mb-4">Inbox</h1>
+      <h1 className="mb-4 text-xl font-semibold text-gray-900">Inbox</h1>
 
       {/* Search bar */}
-      <SearchBar />
+      <SearchBar showFilters={false} />
 
       {/* Message List */}
       <div className="space-y-2">
@@ -61,7 +61,7 @@ export default function InboxPage() {
         ))}
 
         {filteredMessages.length === 0 && (
-          <p className="text-gray-400 text-sm text-center pt-4">
+          <p className="pt-4 text-sm text-center text-gray-400">
             No messages found
           </p>
         )}

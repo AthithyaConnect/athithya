@@ -1,9 +1,8 @@
-import PostCard from "@/components/cards/PostCard";
-
+ 
 export default function Feed() {
   return (
     <div className="py-4">
-      <PostCard
+      {/* <PostCard
         user={{
           name: "Abhinav",
           avatar: "https://i.pravatar.cc/100?img=12",
@@ -32,7 +31,7 @@ export default function Feed() {
             url: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
           },
         ]}
-      />
+      /> */}
     </div>
   );
 }

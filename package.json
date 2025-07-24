@@ -18,11 +18,15 @@
     "next": "15.4.1",
     "phosphor-react": "^1.4.1",
     "react": "19.1.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "19.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/node": "24.0.14",
+    "@types/react": "19.1.8",
     "eslint": "^9",
     "eslint-config-next": "15.4.1",
     "prettier": "^3.6.2",
