@@ -109,7 +109,7 @@ export default function BookingPage() {
           <p className="text-sm text-neutral-600">
             Bromo Tengger Semeru National Park, located in East Java, Indonesia,
             features active volcanoes, rugged landscapes, and the iconic Mount
-            Bromo. It's a popular destination for hiking, sunrise views, and
+            Bromo. Its a popular destination for hiking, sunrise views, and
             stunning volcanic scenery.
           </p>
         </div>
