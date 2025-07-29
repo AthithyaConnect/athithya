@@ -12,7 +12,7 @@ export default function SearchBar({ onChange, showFilters = true, onFilterClick=
   };
 
   return (
-    <div className="flex items-center justify-between gap-2 px-2 py-2 bg-gray-100 rounded-full ">
+    <div className="flex items-center justify-between gap-2 bg-gray-100 rounded-full ">
       <Input
         startContent={<MagnifyingGlass className="text-gray-500" />}
         placeholder="Search..."
@@ -23,7 +23,7 @@ export default function SearchBar({ onChange, showFilters = true, onFilterClick=
             "overflow-hidden",
             "rounded-full",
             "shadow-none",
-            "px-2",
+            "px-4",
             "py-3",
             "h-fit",
             "text-md",
@@ -34,13 +34,15 @@ export default function SearchBar({ onChange, showFilters = true, onFilterClick=
             "rounded-full",
             "shadow-none",
             "w-full",
-            "px-2",
+            "px-3",
             "h-fit",
+            "border", 
+            "border-gray-200",
           ],
         }}
       />
   {
-    showFilters &&     <div onClick={onFilterClick}  className="p-2 bg-white rounded-full ">
+    showFilters &&     <div onClick={onFilterClick}  className="p-2 rounded-full bg-neutral-100 ">
         <SlidersHorizontal />
       </div>
   }

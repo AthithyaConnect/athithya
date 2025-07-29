@@ -16,7 +16,7 @@ export default function OTPPage() {
       setError("Invalid OTP");
       return;
     }
-    const expires = new Date(Date.now() + 10 * 60 * 1000).toUTCString(); // 10 mins
+    const expires = new Date(Date.now() + 300 * 60 * 1000).toUTCString(); // 10 mins
     document.cookie = `otp=${value}; path=/; expires=${expires}`;
     setError(null);
     router.push("/u/home");

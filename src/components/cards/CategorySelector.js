@@ -2,9 +2,9 @@
 import Image from "next/image";
 
 const categories = [
+  { name: "Local Stays", image: "/tour.png" },
+  { name: "Local Cusines", image: "/food.png" },
   { name: "Rooms", image: "/room.png" },
-  { name: "Food", image: "/food.png" },
-  { name: "Tour Guide", image: "/tour.png" },
 ];
 
 export default function CategorySelector({ onSelect }) {
@@ -25,7 +25,7 @@ export default function CategorySelector({ onSelect }) {
               className="object-cover w-full h-full"
             />
           </div>
-          <span className="text-sm mt-1">{cat.name}</span>
+          <span className="mt-1 text-sm">{cat.name}</span>
         </button>
       ))}
     </div>

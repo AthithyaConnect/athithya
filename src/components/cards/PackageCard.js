@@ -2,15 +2,12 @@
 import Image from "next/image";
 import { MapPin, Star, Heart } from "phosphor-react";
 import { useRouter } from "next/navigation";
-import { Button } from "@heroui/react";
 
-export default function HostCard({ title, address, rating, price, imageUrl,  disableNavigation = false, showViewButton = false }) {
+export default function HostCard({ title, address, rating, price, imageUrl, days }) {
   const router = useRouter();
   return (
     <div
-       onClick={() => {
-        if (!disableNavigation) router.push(`/u/explore/${title}`);
-      }}
+      onClick={() => router.push(`/u/explore/${title}`)}
       className="w-full overflow-hidden transition border border-gray-200 cursor-pointer rounded-xl hover:shadow-md"
     >
       <div className="relative w-full h-40">
@@ -36,16 +33,9 @@ export default function HostCard({ title, address, rating, price, imageUrl,  dis
         </div>
         <div className="mt-1 text-base font-bold">
           ₹{price}{" "}
-          <span className="text-sm font-normal text-gray-500">for 1 night</span>
+          
+          <span className="text-sm font-normal text-gray-500">/ per head / {days} days</span>
         </div>
-        <Button
-        color="primary"
-        className="mt-2"
-          onPress={() => {
-        router.push(`/u/explore/${title}`);
-      }}>
-          View
-        </Button>
       </div>
     </div>
   );
