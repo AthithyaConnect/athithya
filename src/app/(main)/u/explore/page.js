@@ -26,7 +26,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen gap-12 px-2 py-4 bg-white">
       <div className="flex items-center justify-between w-full max-w-md gap-2 mx-auto">
-        <SearchBar onChange={(val) => setSearch(val)} showFilters={false} />
+        <SearchBar onChange={(val) => setSearch(val)} showFilters={true} />
         <div onClick={()=>router.push("/u/ai-trip-planner")}  className="flex items-center justify-between p-3 text-white rounded-full bg-gradient-to-br from-[#7835ff] to-[#0016bc] w-fit">
           <Sparkle color="white" />
         </div>
