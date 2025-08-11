@@ -36,6 +36,7 @@ html {
   --color-primary: #0b00cd;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-intrument-serif);
 }
 
 /* @media (prefers-color-scheme: dark) {
