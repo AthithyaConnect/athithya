@@ -3,7 +3,11 @@ import { useState } from "react";
 import { MagnifyingGlass, SlidersHorizontal } from "phosphor-react";
 import { Input } from "@heroui/react";
 
-export default function SearchBar({ onChange, showFilters = true, onFilterClick=() => {} }) {
+export default function SearchBar({
+  onChange,
+  showFilters = true,
+  onFilterClick = () => {},
+}) {
   const [value, setValue] = useState("");
 
   const handleChange = (e) => {
@@ -39,11 +43,14 @@ export default function SearchBar({ onChange, showFilters = true, onFilterClick=
           ],
         }}
       />
-  {
-    showFilters &&     <div onClick={onFilterClick}  className="p-2 pr-4 bg-white rounded-full ">
-        <SlidersHorizontal />
-      </div>
-  }
+      {showFilters && (
+        <div
+          onClick={onFilterClick}
+          className="p-2 pr-4 bg-white rounded-full "
+        >
+          <SlidersHorizontal />
+        </div>
+      )}
     </div>
   );
 }

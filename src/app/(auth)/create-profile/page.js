@@ -12,7 +12,7 @@ import {
 } from "@heroui/react";
 import Image from "next/image";
 import { Plus } from "phosphor-react";
-import { parseDate, getLocalTimeZone } from "@internationalized/date";
+import { getLocalTimeZone } from "@internationalized/date";
 import { useDateFormatter } from "@react-aria/i18n";
 import { validateUsername, validateBio } from "@/util/validation";
 
@@ -26,11 +26,10 @@ const CreateProfile = () => {
   const [dateOfBirth, setDateOfBirth] = useState(null);
   const [saved, setSaved] = useState(false);
 
-
   const availableLanguages = ["Hindi", "English", "Spanish", "French"];
 
   const [image, setImage] = useState(
-    "https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671116.jpg"
+    "https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671116.jpg",
   );
   const fileInputRef = useRef(null);
 
@@ -45,7 +44,7 @@ const CreateProfile = () => {
 
   const toggleLanguage = (lang) => {
     setLanguages((prev) =>
-      prev.includes(lang) ? prev.filter((l) => l !== lang) : [...prev, lang]
+      prev.includes(lang) ? prev.filter((l) => l !== lang) : [...prev, lang],
     );
   };
 

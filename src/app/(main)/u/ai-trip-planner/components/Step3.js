@@ -8,27 +8,27 @@ export default function Step3Dates({ formData, setFormData }) {
     start: today(getLocalTimeZone()),
     end: today(getLocalTimeZone()).add({ weeks: 1 }),
   });
-const formatDate = (d) => {
-  if (!d) return "";
-  const date = d.toDate(getLocalTimeZone());
-  return date.toLocaleDateString("en-US", {
-    weekday: "short",
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
-};
+  const formatDate = (d) => {
+    if (!d) return "";
+    const date = d.toDate(getLocalTimeZone());
+    return date.toLocaleDateString("en-US", {
+      weekday: "short",
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  };
 
-const handleChange = (newRange) => {
-  setRange(newRange);
-  setFormData({
-    ...formData,
-    startDate: formatDate(newRange.start),
-    endDate: formatDate(newRange.end),
-    startDateRaw: newRange.start,
-    endDateRaw: newRange.end,
-  });
-};
+  const handleChange = (newRange) => {
+    setRange(newRange);
+    setFormData({
+      ...formData,
+      startDate: formatDate(newRange.start),
+      endDate: formatDate(newRange.end),
+      startDateRaw: newRange.start,
+      endDateRaw: newRange.end,
+    });
+  };
   return (
     <div className="flex flex-col gap-4">
       <RangeCalendar

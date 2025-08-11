@@ -1,5 +1,3 @@
-
-
 export const hosts = [
   {
     title: "3BHK Villa with Mountain View",
@@ -104,16 +102,21 @@ export const packages = [
   },
 ];
 
-
 export const indianStates = {
-  "Uttarakhand": ["Mussoorie", "Rishikesh", "Nainital", "Auli", "Dehradun"],
-  "Himachal Pradesh": ["Manali", "Shimla", "Dharamshala", "Kasol", "Spiti Valley"],
-  "Goa": ["Calangute", "Baga Beach", "Panaji", "Anjuna", "Palolem"],
-  "Rajasthan": ["Jaipur", "Udaipur", "Jaisalmer", "Jodhpur", "Pushkar"],
-  "Kerala": ["Munnar", "Alleppey", "Kochi", "Wayanad", "Kovalam"],
-  "Maharashtra": ["Lonavala", "Mahabaleshwar", "Mumbai", "Pune", "Nashik"],
+  Uttarakhand: ["Mussoorie", "Rishikesh", "Nainital", "Auli", "Dehradun"],
+  "Himachal Pradesh": [
+    "Manali",
+    "Shimla",
+    "Dharamshala",
+    "Kasol",
+    "Spiti Valley",
+  ],
+  Goa: ["Calangute", "Baga Beach", "Panaji", "Anjuna", "Palolem"],
+  Rajasthan: ["Jaipur", "Udaipur", "Jaisalmer", "Jodhpur", "Pushkar"],
+  Kerala: ["Munnar", "Alleppey", "Kochi", "Wayanad", "Kovalam"],
+  Maharashtra: ["Lonavala", "Mahabaleshwar", "Mumbai", "Pune", "Nashik"],
   "Tamil Nadu": ["Ooty", "Kodaikanal", "Chennai", "Mahabalipuram", "Madurai"],
-  "Karnataka": ["Coorg", "Chikmagalur", "Bangalore", "Gokarna", "Hampi"],
-  "Sikkim": ["Gangtok", "Lachung", "Pelling", "Namchi", "Tsomgo Lake"],
-  "West Bengal": ["Darjeeling", "Kolkata", "Sundarbans", "Kalimpong", "Digha"]
-}
+  Karnataka: ["Coorg", "Chikmagalur", "Bangalore", "Gokarna", "Hampi"],
+  Sikkim: ["Gangtok", "Lachung", "Pelling", "Namchi", "Tsomgo Lake"],
+  "West Bengal": ["Darjeeling", "Kolkata", "Sundarbans", "Kalimpong", "Digha"],
+};

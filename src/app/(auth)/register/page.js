@@ -44,82 +44,89 @@ const Register = () => {
         </p>
 
         <div className="flex flex-col gap-4">
-         <Form onSubmit={handleSubmit} className="flex flex-col gap-4">
-           <Input
-            size="lg"
-            radius="lg"
-            labelPlacement="outside"
-            label="Email"
-            type="email"
-            name="email"
-            placeholder="john@gmail.com"
-          />
+          <Form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <Input
+              size="lg"
+              radius="lg"
+              labelPlacement="outside"
+              label="Email"
+              type="email"
+              name="email"
+              placeholder="john@gmail.com"
+            />
 
-          <Input
-            size="lg"
-            radius="lg"
-            labelPlacement="outside"
-            label="Password"
-            type={showPassword ? "text" : "password"}
-            placeholder="Enter password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            endContent={
-              <Button
-                isIconOnly
-                variant="text"
-                onPress={() => setShowPassword((prev) => !prev)}
-                className="focus:outline-none"
-              >
-                {showPassword ? (
-                  <EyeSlash size={22} weight="bold" className="text-gray-600" />
-                ) : (
-                  <Eye size={22} weight="bold" className="text-gray-600" />
-                )}
-              </Button>
-            }
-          />
+            <Input
+              size="lg"
+              radius="lg"
+              labelPlacement="outside"
+              label="Password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              endContent={
+                <Button
+                  isIconOnly
+                  variant="text"
+                  onPress={() => setShowPassword((prev) => !prev)}
+                  className="focus:outline-none"
+                >
+                  {showPassword ? (
+                    <EyeSlash
+                      size={22}
+                      weight="bold"
+                      className="text-gray-600"
+                    />
+                  ) : (
+                    <Eye size={22} weight="bold" className="text-gray-600" />
+                  )}
+                </Button>
+              }
+            />
 
-          <Input
-            size="lg"
-            radius="lg"
-            labelPlacement="outside"
-            label="Confirm Password"
-            type={showPassword ? "text" : "password"}
-            placeholder="Confirm password"
-            name="confirmPassword"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            endContent={
-              <Button
-                isIconOnly
-                variant="text"
-                onPress={() => setShowPassword((prev) => !prev)}
-                className="focus:outline-none"
-              >
-                {showPassword ? (
-                  <EyeSlash size={22} weight="bold" className="text-gray-600" />
-                ) : (
-                  <Eye size={22} weight="bold" className="text-gray-600" />
-                )}
-              </Button>
-            }
-          />
+            <Input
+              size="lg"
+              radius="lg"
+              labelPlacement="outside"
+              label="Confirm Password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Confirm password"
+              name="confirmPassword"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              endContent={
+                <Button
+                  isIconOnly
+                  variant="text"
+                  onPress={() => setShowPassword((prev) => !prev)}
+                  className="focus:outline-none"
+                >
+                  {showPassword ? (
+                    <EyeSlash
+                      size={22}
+                      weight="bold"
+                      className="text-gray-600"
+                    />
+                  ) : (
+                    <Eye size={22} weight="bold" className="text-gray-600" />
+                  )}
+                </Button>
+              }
+            />
 
-          {error && <p className="text-sm text-red-500">{error}</p>}
+            {error && <p className="text-sm text-red-500">{error}</p>}
 
-          <Button
-            size="lg"
-            radius="lg"
-            color="primary"
-            type="submit"
-            className="w-full text-base font-semibold sm:text-lg"
-       
-          >
-            Sign Up
-          </Button>
-         </Form>
+            <Button
+              size="lg"
+              radius="lg"
+              color="primary"
+              type="submit"
+              className="w-full text-base font-semibold sm:text-lg"
+            >
+              Sign Up
+            </Button>
+          </Form>
         </div>
 
         <div className="flex items-center gap-3 my-6">

@@ -8,26 +8,22 @@ const templates = {
   "1:1": {
     4: [
       [
-        { colSpan: 3, rowSpan: 3},
-        { colSpan: 3, rowSpan: 3},
-        { colSpan: 2, rowSpan: 3},
-        { colSpan: 2, rowSpan: 3},
+        { colSpan: 3, rowSpan: 3 },
+        { colSpan: 3, rowSpan: 3 },
+        { colSpan: 2, rowSpan: 3 },
+        { colSpan: 2, rowSpan: 3 },
       ],
       [
         { colSpan: 2, rowSpan: 1 },
         { colSpan: 2, rowSpan: 1 },
         { colSpan: 1, rowSpan: 1 },
-        { colSpan: 3, rowSpan: 1 }
-      ]
-    ]
+        { colSpan: 3, rowSpan: 1 },
+      ],
+    ],
   },
   "4:3": {
-    6: [
-      [
-        { colSpan: 1, rowSpan: 1 },
-      ]
-    ]
-  }
+    6: [[{ colSpan: 1, rowSpan: 1 }]],
+  },
 };
 
 export default function SmartGridUpload() {
@@ -54,7 +50,7 @@ export default function SmartGridUpload() {
       const newImages = [...images];
       [newImages[active], newImages[index]] = [
         newImages[index],
-        newImages[active]
+        newImages[active],
       ];
       setImages(newImages);
       setActive(null);
@@ -133,7 +129,7 @@ export default function SmartGridUpload() {
             className={clsx(
               "relative border overflow-hidden bg-gray-100 flex items-center justify-center",
               `col-span-${slot.colSpan} row-span-${slot.rowSpan}`,
-              active === i ? "ring-4 ring-green-500" : ""
+              active === i ? "ring-4 ring-green-500" : "",
             )}
           >
             {images[i] ? (

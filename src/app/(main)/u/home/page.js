@@ -1,4 +1,3 @@
- 
 export default function Feed() {
   return (
     <div className="py-4">

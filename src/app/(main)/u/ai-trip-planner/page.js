@@ -9,7 +9,10 @@ import Step6Map from "./components/Step6";
 import { Button } from "@heroui/react";
 
 const steps = [
-  { title: "Pick Your Preffered  State", desc: "Where does your journey begin?" },
+  {
+    title: "Pick Your Preffered  State",
+    desc: "Where does your journey begin?",
+  },
   { title: "Select a Place", desc: "Choose your dream spot in Uttarakhand." },
   { title: "Pick Travel Dates", desc: "When do you plan to travel?" },
   {
@@ -44,7 +47,7 @@ export default function TripPlanner() {
         <p className="text-xs text-center text-gray-600">
           Plan your perfect trip with AI assistance.
         </p>
-         <div className="w-full h-1 mt-4 bg-gray-200 rounded-full">
+        <div className="w-full h-1 mt-4 bg-gray-200 rounded-full">
           <div
             className="h-full transition-all rounded-full bg-primary"
             style={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
@@ -54,12 +57,11 @@ export default function TripPlanner() {
       <div className="p-4 mb-4 ">
         <div className="text-lg font-bold">{steps[currentStep].title}</div>
         <div className="text-sm text-gray-600">{steps[currentStep].desc}</div>
-       
       </div>
 
-     <div className="px-4">
-       <StepComponent formData={formData} setFormData={setFormData} />
-     </div>
+      <div className="px-4">
+        <StepComponent formData={formData} setFormData={setFormData} />
+      </div>
 
       <div className="flex justify-between p-4">
         <Button

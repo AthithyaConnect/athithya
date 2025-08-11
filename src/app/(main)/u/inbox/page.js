@@ -6,7 +6,7 @@ import MessageCard from "@/components/cards/MessageCard";
 
 export default function InboxPage() {
   const [search, setSearch] = useState("");
- 
+
   const messages = [
     {
       avatar: "https://randomuser.me/api/portraits/women/75.jpg",

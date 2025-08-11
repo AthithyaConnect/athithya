@@ -60,7 +60,9 @@ export default function MainLayout({ children }) {
                       color="currentColor"
                       className={`w-6 h-6 ${iconColorClass}`}
                     />
-                    <span className={`text-xs ${labelColorClass}`}>{label}</span>
+                    <span className={`text-xs ${labelColorClass}`}>
+                      {label}
+                    </span>
                   </>
                 )}
               </Link>

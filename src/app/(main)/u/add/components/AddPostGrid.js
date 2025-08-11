@@ -6,7 +6,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 
 const GridItem = ({ image, index, moveImage, handleImageChange }) => {
   const [{ isDragging }, drag] = useDrag({
-    type: "image",  
+    type: "image",
     item: { index },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),

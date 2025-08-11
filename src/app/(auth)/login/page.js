@@ -3,9 +3,8 @@ import { Button, Divider, Input, Form } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Eye, EyeSlash } from "phosphor-react";
 import { useRouter } from "next/navigation";
-import { validateEmail, validatePassword } from "@/util/validation";
+import { validateEmail } from "@/util/validation";
 
 const Login = () => {
   const [error, setError] = useState("");

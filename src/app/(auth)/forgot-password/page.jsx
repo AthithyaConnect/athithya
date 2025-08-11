@@ -4,7 +4,6 @@ import { Button, Input, Form } from "@heroui/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-
 const ForgotPassword = () => {
   const [error, setError] = useState("");
   const router = useRouter();

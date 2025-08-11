@@ -1,8 +1,6 @@
 "use client";
-import { Button, Divider, Form, Input } from "@heroui/react";
+import { Button, Form, Input } from "@heroui/react";
 import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { Eye, EyeSlash } from "phosphor-react";
 import { useRouter } from "next/navigation";
 

@@ -11,7 +11,7 @@ export const validateUsername = (name, setUsernameError) => {
     /^(?=.{3,20}$)(?!.*[._]{2})[a-zA-Z0-9](?:[a-zA-Z0-9._]*[a-zA-Z0-9])?$/;
   if (!regex.test(name)) {
     setUsernameError(
-      "Username must be 3–20 chars, letters/numbers/._ only, no spaces or special chars."
+      "Username must be 3–20 chars, letters/numbers/._ only, no spaces or special chars.",
     );
     return false;
   }
@@ -36,13 +36,17 @@ export const validatePassword = (password, setPasswordError) => {
   }
   setPasswordError("");
   return true;
-}
+};
 
-export const validateConfirmPassword = (password, confirmPassword, setError) => {
+export const validateConfirmPassword = (
+  password,
+  confirmPassword,
+  setError,
+) => {
   if (password !== confirmPassword) {
     setError("Passwords do not match.");
     return false;
   }
   setError("");
   return true;
-}
+};

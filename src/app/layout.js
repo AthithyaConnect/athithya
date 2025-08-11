@@ -1,12 +1,4 @@
-import {
-  Bricolage_Grotesque,
-  Geist,
-  Geist_Mono,
-  Inter_Tight,
-  Manrope,
-  Outfit,
-  Urbanist,
-} from "next/font/google";
+import { Geist_Mono, Manrope } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 
