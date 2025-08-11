@@ -10,7 +10,7 @@ import {
 import "./globals.css";
 import Providers from "./providers";
 
-const mainFont = Inter_Tight({
+const mainFont = Manrope({
   variable: "--font-geist-sans",
   subsets: ["latin"],
   weight: ["200", "300", "400", "500", "600", "700", "800"],
@@ -31,10 +31,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${mainFont.className} ${geistMono.variable} border-x  border-gray-100 max-w-md mx-auto w-full min-h-[100dvh]  antialiased`}
+        className={`${mainFont.className}   border-x  border-gray-100  mx-auto w-full min-h-[100dvh]  antialiased`}
       >
         <Providers>
-          <div className="max-w-md mx-auto w-full min-h-[100dvh] flex flex-col">
+          <div className=" mx-auto w-full min-h-[100dvh] flex flex-col">
             {children}
           </div>
         </Providers>

@@ -3,6 +3,13 @@
 @source '../../node_modules/@heroui/theme/dist*.{js,ts,jsx,tsx}';
 /* @custom-variant dark (&:is(.dark *)) */
 
+
+@layer utilities{
+  .full-wrapper {
+    @apply flex items-center justify-center w-full min-h-screen gap-2;
+  }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
