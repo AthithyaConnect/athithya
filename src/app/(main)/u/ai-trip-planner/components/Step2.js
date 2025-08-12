@@ -1,4 +1,4 @@
-import { indianStates } from "@/constants";
+import { indianStates } from "@/constants/tempData";
 
 export default function Step2Locations({ formData, setFormData }) {
   const locations = indianStates[formData.state] || [];

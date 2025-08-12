@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { validateEmail } from "@/util/validation";
+import { validateEmail } from "@/utils/validation";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -36,7 +36,6 @@ const Login = () => {
         <div className="flex flex-col gap-4">
           <Form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <Input
-              size="lg"
               radius="lg"
               labelPlacement="outside"
               name="email"
@@ -45,7 +44,6 @@ const Login = () => {
               placeholder="john@gmail.com"
             />
             <Input
-              size="lg"
               radius="lg"
               labelPlacement="outside"
               name="password"
@@ -64,7 +62,6 @@ const Login = () => {
             </div>
 
             <Button
-              size="lg"
               type="submit"
               radius="lg"
               color="primary"
@@ -82,7 +79,6 @@ const Login = () => {
         </div>
 
         <Button
-          size="lg"
           radius="lg"
           className="w-full font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50"
           startContent={

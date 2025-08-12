@@ -36,7 +36,6 @@ const ResetPassword = () => {
           <Form onSubmit={handleSubmit} className="flex flex-col gap-4">
             {" "}
             <Input
-              size="lg"
               radius="lg"
               labelPlacement="outside"
               label="Password"
@@ -64,7 +63,6 @@ const ResetPassword = () => {
               }
             />
             <Input
-              size="lg"
               radius="lg"
               labelPlacement="outside"
               label="Confirm Password"
@@ -93,7 +91,6 @@ const ResetPassword = () => {
             />
             {error && <p className="text-sm text-red-500">{error}</p>}
             <Button
-              size="lg"
               radius="lg"
               color="primary"
               className="w-full text-base font-semibold sm:text-lg"

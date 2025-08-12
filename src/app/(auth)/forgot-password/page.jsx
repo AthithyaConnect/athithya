@@ -1,5 +1,5 @@
 "use client";
-import { validateEmail } from "@/util/validation";
+import { validateEmail } from "@/utils/validation";
 import { Button, Input, Form } from "@heroui/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -30,7 +30,6 @@ const ForgotPassword = () => {
         <div className="flex flex-col gap-4">
           <Form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <Input
-              size="lg"
               radius="lg"
               labelPlacement="outside"
               label="Email"
@@ -41,7 +40,6 @@ const ForgotPassword = () => {
             {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
 
             <Button
-              size="lg"
               radius="lg"
               color="primary"
               type="submit"

@@ -1,4 +1,9 @@
-import { Geist_Mono, Instrument_Serif, Inter_Tight, Manrope } from "next/font/google";
+import {
+  Geist_Mono,
+  Instrument_Serif,
+  Inter_Tight,
+  Manrope,
+} from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 
@@ -11,11 +16,9 @@ const mainFont = Inter_Tight({
 
 const serif = Instrument_Serif({
   variable: "--font-intrument-serif",
-  subsets: ["latin"], 
-  weight:['400']
+  subsets: ["latin"],
+  weight: ["400"],
 });
-
-
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -31,7 +34,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${mainFont.className} ${geistMono.variable} ${serif.variable}  border-x  border-gray-100  mx-auto w-full min-h-[100dvh]  antialiased`}
+        className={`${mainFont.className} ${geistMono.variable} ${serif.variable}    border-gray-100  mx-auto w-full min-h-[100dvh]  antialiased`}
       >
         <Providers>
           <div className=" mx-auto w-full min-h-[100dvh] flex flex-col">

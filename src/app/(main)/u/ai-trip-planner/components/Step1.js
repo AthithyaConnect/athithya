@@ -1,4 +1,4 @@
-import { indianStates } from "@/constants";
+import { indianStates } from "@/constants/tempData";
 
 export default function Step1State({ formData, setFormData }) {
   const states = Object.keys(indianStates);

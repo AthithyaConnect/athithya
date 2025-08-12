@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import HostCard from "@/components/cards/HostCard";
-import { hosts } from "@/constants";
+import { hosts } from "@/constants/tempData";
 
 export default function Step4FoodStay({ formData, setFormData }) {
   return (

@@ -14,10 +14,13 @@ import Image from "next/image";
 import { Plus } from "phosphor-react";
 import { getLocalTimeZone } from "@internationalized/date";
 import { useDateFormatter } from "@react-aria/i18n";
-import { validateUsername, validateBio } from "@/util/validation";
+import { validateUsername, validateBio } from "@/utils/validation";
+import { handleImageUpload, toggleLanguage } from "@/utils";
+import { interestCategories } from "@/constants";
+import { useRouter } from "next/navigation";
 
 const CreateProfile = () => {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("jjj");
   const [bio, setBio] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [bioError, setBioError] = useState("");
@@ -25,28 +28,32 @@ const CreateProfile = () => {
   const [gender, setGender] = useState("male");
   const [dateOfBirth, setDateOfBirth] = useState(null);
   const [saved, setSaved] = useState(false);
-
+  const fileInputRef = useRef(null);
+  const [userType, setUserType] = useState("");
   const availableLanguages = ["Hindi", "English", "Spanish", "French"];
+  const router = useRouter();
+  const [userInterests, setUserInterests] = useState(
+    interestCategories.reduce((acc, category) => {
+      acc[category.category] = [];
+      return acc;
+    }, {}),
+  );
+
+  const toggleInterest = (category, option) => {
+    setUserInterests((prev) => {
+      const isSelected = prev[category].includes(option);
+      return {
+        ...prev,
+        [category]: isSelected
+          ? prev[category].filter((item) => item !== option)
+          : [...prev[category], option],
+      };
+    });
+  };
 
   const [image, setImage] = useState(
     "https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671116.jpg",
   );
-  const fileInputRef = useRef(null);
-
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => setImage(reader.result);
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const toggleLanguage = (lang) => {
-    setLanguages((prev) =>
-      prev.includes(lang) ? prev.filter((l) => l !== lang) : [...prev, lang],
-    );
-  };
 
   const formatter = useDateFormatter({
     day: "2-digit",
@@ -63,6 +70,8 @@ const CreateProfile = () => {
     formData.dateOfBirth = dateOfBirth
       ? formatter.format(dateOfBirth.toDate(getLocalTimeZone()))
       : "";
+    formData.image = image;
+    formData.userType = userType;
 
     const isUsernameValid = validateUsername(username, setUsernameError);
     const isBioValid = validateBio(bio, setBioError);
@@ -74,7 +83,7 @@ const CreateProfile = () => {
   };
 
   return (
-    <div className="flex justify-center min-h-screen bg-gray-100 md:p-4 md:items-center md:px-4">
+    <div className="flex items-start justify-center bg-gray-100 min-h-100dvh md:p-4 md:px-4">
       <div className="w-full max-w-md p-4 bg-white sm:p-8 md:rounded-3xl">
         <h3 className="text-2xl font-bold text-gray-900 sm:text-2xl">
           Create Profile
@@ -83,7 +92,7 @@ const CreateProfile = () => {
           Welcome to Athithya! Your journey starts with you!
         </p>
 
-        {!saved ? (
+        {!saved && !userType && (
           <Form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div className="relative w-fit">
               <Image
@@ -97,7 +106,7 @@ const CreateProfile = () => {
                 type="file"
                 accept="image/*"
                 ref={fileInputRef}
-                onChange={handleImageUpload}
+                onChange={(e) => handleImageUpload(e, setImage)}
                 className="hidden"
               />
               <div
@@ -109,7 +118,6 @@ const CreateProfile = () => {
             </div>
 
             <Input
-              size="lg"
               radius="lg"
               labelPlacement="outside"
               name="name"
@@ -119,7 +127,6 @@ const CreateProfile = () => {
             />
 
             <Input
-              size="lg"
               radius="lg"
               labelPlacement="outside"
               name="username"
@@ -135,7 +142,6 @@ const CreateProfile = () => {
             />
 
             <Input
-              size="lg"
               radius="lg"
               labelPlacement="outside"
               name="phone"
@@ -161,7 +167,7 @@ const CreateProfile = () => {
                     key={lang}
                     variant={languages.includes(lang) ? "solid" : "bordered"}
                     color={languages.includes(lang) ? "primary" : "default"}
-                    onClick={() => toggleLanguage(lang)}
+                    onClick={() => toggleLanguage(lang, setLanguages)}
                     className="cursor-pointer"
                     role="checkbox"
                     aria-checked={languages.includes(lang)}
@@ -191,7 +197,6 @@ const CreateProfile = () => {
             </RadioGroup>
 
             <Input
-              size="lg"
               radius="lg"
               labelPlacement="outside"
               label="Location"
@@ -201,7 +206,6 @@ const CreateProfile = () => {
             />
 
             <Textarea
-              size="lg"
               radius="lg"
               name="bio"
               labelPlacement="outside"
@@ -215,29 +219,93 @@ const CreateProfile = () => {
             />
 
             <Button
-              size="lg"
               radius="lg"
               color="primary"
-              className="w-full text-base font-semibold sm:text-lg"
+              className="w-full text-base sm:text-lg"
               type="submit"
             >
               Save Profile
             </Button>
           </Form>
-        ) : (
+        )}
+
+        {saved && !userType && (
           <div className="flex flex-col gap-4">
-            <div className="flex flex-col items-center w-full gap-2 p-4 text-center border border-gray-200 cursor-pointer select-none h-fit rounded-2xl sm:text-lg active:bg-gray-100">
+            {userType && userType}
+            <div
+              onClick={() => setUserType("traveller")}
+              className="flex flex-col items-center w-full gap-2 p-4 text-center border border-gray-200 cursor-pointer select-none h-fit rounded-3xl sm:text-lg active:bg-gray-100"
+            >
+              <Image
+                src={
+                  "https://img.freepik.com/free-photo/tourist-carrying-luggage_23-2151747444.jpg"
+                }
+                alt="Traveller"
+                width={1000}
+                height={1000}
+                className="object-cover w-full h-32 mb-2 rounded-2xl"
+              />
               <p className="font-bold"> Continue as Traveller</p>
               <p className="text-sm text-gray-500 h-fit">
                 Explore and book amazing experiences made just for you.
               </p>
             </div>
-            <div className="flex flex-col items-center w-full gap-2 p-4 text-center border border-gray-200 cursor-pointer select-none h-fit rounded-2xl sm:text-lg active:bg-gray-100">
+            <div
+              onClick={() => setUserType("host")}
+              className="flex flex-col items-center w-full gap-2 p-4 text-center border border-gray-200 cursor-pointer select-none h-fit rounded-3xl sm:text-lg active:bg-gray-100"
+            >
+              <Image
+                src={
+                  "https://img.freepik.com/free-photo/diverse-young-people-being-digital-nomads-working-remotely-from-dreamy-locations_23-2151187937.jpg"
+                }
+                alt="Traveller"
+                width={1000}
+                height={1000}
+                className="object-cover w-full h-32 mb-2 rounded-2xl"
+              />
               <p className="font-bold"> Continue as Host</p>
               <p className="text-sm text-gray-500 h-fit">
                 Create and share unique experiences with travelers worldwide.
               </p>
             </div>
+          </div>
+        )}
+
+        {userType && userType == "traveller" && (
+          <div>
+            <h4 className="mb-4 text-xl font-bold">
+              Select Your Interests ({userType})
+            </h4>
+
+            {interestCategories.map((cat) => (
+              <div key={cat.category} className="mb-6">
+                <p className="mb-2 font-semibold">{cat.category}</p>
+                <div className="flex flex-wrap gap-2">
+                  {cat.options.map((option) => {
+                    const selected =
+                      userInterests[cat.category].includes(option);
+                    return (
+                      <Chip
+                        key={option}
+                        variant={selected ? "solid" : "bordered"}
+                        color={selected ? "primary" : "default"}
+                        onClick={() => toggleInterest(cat.category, option)}
+                        className="p-2 py-4 border cursor-pointer"
+                      >
+                        {option}
+                      </Chip>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+            <Button
+              color="primary"
+              className="w-full"
+              onPress={() => router.push("/u/home")}
+            >
+              Continue
+            </Button>
           </div>
         )}
       </div>

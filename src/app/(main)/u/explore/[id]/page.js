@@ -1,5 +1,5 @@
 "use client";
-import { hosts } from "@/constants";
+import { hosts } from "@/constants/tempData";
 import { Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
 // pages/booking.tsx

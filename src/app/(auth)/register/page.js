@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Eye, EyeSlash } from "phosphor-react";
 import { useRouter } from "next/navigation";
-import { validatePassword, validateConfirmPassword } from "@/util/validation";
+import { validatePassword, validateConfirmPassword } from "@/utils/validation";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -46,7 +46,6 @@ const Register = () => {
         <div className="flex flex-col gap-4">
           <Form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <Input
-              size="lg"
               radius="lg"
               labelPlacement="outside"
               label="Email"
@@ -56,7 +55,6 @@ const Register = () => {
             />
 
             <Input
-              size="lg"
               radius="lg"
               labelPlacement="outside"
               label="Password"
@@ -86,7 +84,6 @@ const Register = () => {
             />
 
             <Input
-              size="lg"
               radius="lg"
               labelPlacement="outside"
               label="Confirm Password"
@@ -118,7 +115,6 @@ const Register = () => {
             {error && <p className="text-sm text-red-500">{error}</p>}
 
             <Button
-              size="lg"
               radius="lg"
               color="primary"
               type="submit"
@@ -136,7 +132,6 @@ const Register = () => {
         </div>
 
         <Button
-          size="lg"
           radius="lg"
           className="w-full font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50"
           startContent={

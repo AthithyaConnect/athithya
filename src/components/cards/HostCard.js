@@ -46,15 +46,17 @@ export default function HostCard({
           ₹{price}{" "}
           <span className="text-sm font-normal text-gray-500">for 1 night</span>
         </div>
-        <Button
-          color="primary"
-          className="mt-2"
-          onPress={() => {
-            router.push(`/u/explore/${title}`);
-          }}
-        >
-          View
-        </Button>
+        {showViewButton && (
+          <Button
+            color="primary"
+            className="mt-2"
+            onPress={() => {
+              router.push(`/u/explore/${title}`);
+            }}
+          >
+            View
+          </Button>
+        )}
       </div>
     </div>
   );

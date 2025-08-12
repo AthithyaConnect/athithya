@@ -21,6 +21,10 @@ export const validateUsername = (name, setUsernameError) => {
 
 export const validateEmail = (email, setEmailError) => {
   const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (email === "") {
+    setEmailError("Please enter your email. ");
+    return false;
+  }
   if (!regex.test(email)) {
     setEmailError("Invalid email format.");
     return false;

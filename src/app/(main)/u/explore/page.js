@@ -4,7 +4,7 @@ import SearchBar from "@/components/cards/SearchBar";
 import CategorySelector from "@/components/cards/CategorySelector";
 import HostList from "@/components/list/HostList";
 import PackageList from "@/components/list/PackageList";
-import { hosts, packages } from "@/constants";
+import { hosts, packages } from "@/constants/tempData";
 import {
   Drawer,
   DrawerContent,
