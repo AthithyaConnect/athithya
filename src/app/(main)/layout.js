@@ -27,6 +27,8 @@ export default function MainLayout({ children }) {
 
   return (
     <div className="flex h-[100dvh] md:flex-row overflow-hidden">
+
+      
       {shouldShowNav && (
         <nav className="fixed bottom-0 left-0 right-0 z-10 flex py-2 overflow-hidden bg-white border-t border-gray-200 md:relative md:flex-col md:w-20 lg:w-64 md:border-t-0 md:border-r md:h-full md:py-8 md:gap-4 ">
           {navItems.map(({ href, icon: Icon, label, isAddButton }) => {

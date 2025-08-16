@@ -9,6 +9,7 @@ export default function InboxPage() {
 
   const messages = [
     {
+      id: 1,
       avatar: "https://randomuser.me/api/portraits/women/75.jpg",
       name: "Sophie Moore",
       message: "Looks amazing!",
@@ -17,6 +18,7 @@ export default function InboxPage() {
       isRead: false,
     },
     {
+      id: 2,
       avatar: "https://randomuser.me/api/portraits/men/32.jpg",
       name: "Jason Lee",
       message: "See you soon!",
@@ -25,6 +27,7 @@ export default function InboxPage() {
       isRead: true,
     },
     {
+      id: 3,
       avatar: "https://randomuser.me/api/portraits/women/65.jpg",
       name: "Emma Green",
       message: "Thanks for the info!",
@@ -33,6 +36,7 @@ export default function InboxPage() {
       isRead: false,
     },
     {
+      id: 4,
       avatar: "https://randomuser.me/api/portraits/men/22.jpg",
       name: "Michael Smith",
       message: "Let me know when you arrive.",

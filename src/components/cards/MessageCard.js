@@ -1,8 +1,10 @@
 "use client";
 import Image from "next/image";
 import clsx from "clsx";
+import { useRouter } from "next/navigation";
 
 export default function MessageCard({
+  id,
   avatar,
   message,
   time,
@@ -10,8 +12,10 @@ export default function MessageCard({
   isRead,
   name = "",
 }) {
+
+  const router = useRouter();
   return (
-    <div className="flex items-center justify-between py-3 border-b border-gray-100">
+    <div onClick={()=> router.push(`/u/inbox/${id}`)}  className="flex items-center justify-between py-3 border-b border-gray-100 cursor-pointer">
       {/* Left Side */}
       <div className="flex items-center gap-3">
         {/* Avatar with online dot */}

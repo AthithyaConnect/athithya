@@ -157,18 +157,18 @@ const CreateProfile = () => {
               onChange={setDateOfBirth}
             />
 
-            <div>
-              <label className="block mb-2 font-medium">
+            <div className="w-full">
+              <label className="block mb-2 text-sm ">
                 Select languages you speak
               </label>
-              <div className="flex flex-wrap gap-2 p-3 bg-zinc-100 rounded-2xl">
+              <div className="flex flex-wrap w-full gap-2 p-3 bg-zinc-100 rounded-2xl">
                 {availableLanguages.map((lang) => (
                   <Chip
                     key={lang}
                     variant={languages.includes(lang) ? "solid" : "bordered"}
                     color={languages.includes(lang) ? "primary" : "default"}
                     onClick={() => toggleLanguage(lang, setLanguages)}
-                    className="cursor-pointer"
+                    className="border cursor-pointer-1"
                     role="checkbox"
                     aria-checked={languages.includes(lang)}
                     tabIndex={0}
@@ -188,6 +188,7 @@ const CreateProfile = () => {
             <RadioGroup
               color="primary"
               value={gender}
+              size="md"
               onChange={(e) => setGender(e.target.value)}
               label="Select your gender"
             >
