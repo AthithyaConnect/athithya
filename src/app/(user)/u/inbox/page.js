@@ -10,7 +10,7 @@ export default function InboxPage() {
   const messages = [
     {
       id: 1,
-      avatar: "https://randomuser.me/api/portraits/women/75.jpg",
+      avatar: "https://cdn.dribbble.com/userupload/16677492/file/original-5520cb858b37544dbf2ea1f2b558d55f.jpg?resize=1504x1128&vertical=center",
       name: "Sophie Moore",
       message: "Looks amazing!",
       time: "2m ago",
@@ -19,7 +19,7 @@ export default function InboxPage() {
     },
     {
       id: 2,
-      avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+      avatar: "https://cdn.dribbble.com/userupload/13037042/file/original-57a0ee0cff3339e49ec2f1b897b45d66.png?format=webp&resize=640x480&vertical=center",
       name: "Jason Lee",
       message: "See you soon!",
       time: "5m ago",
@@ -28,7 +28,7 @@ export default function InboxPage() {
     },
     {
       id: 3,
-      avatar: "https://randomuser.me/api/portraits/women/65.jpg",
+      avatar: "https://cdn.dribbble.com/userupload/16265349/file/original-04d33c2b6918da4a4fd5b4ff57145aef.png?resize=1504x1128&vertical=center",
       name: "Emma Green",
       message: "Thanks for the info!",
       time: "10m ago",
@@ -37,7 +37,7 @@ export default function InboxPage() {
     },
     {
       id: 4,
-      avatar: "https://randomuser.me/api/portraits/men/22.jpg",
+      avatar: "https://cdn.dribbble.com/userupload/16402961/file/original-8b0e8e9c8633301d519c0e652a652a78.png?format=webp&resize=400x300&vertical=center",
       name: "Michael Smith",
       message: "Let me know when you arrive.",
       time: "1h ago",

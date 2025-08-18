@@ -40,6 +40,63 @@ html {
   --font-serif: var(--font-intrument-serif);
 }
 
+
+/* Mesh gradient background with two blurred circles */
+.mesh-bg {
+  position: relative;
+  isolation: isolate;          /* keep effects inside */
+  background: #F3F4F6;         /* fallback/base color */
+  overflow: hidden;            /* hide blob edges */
+}
+
+/* Tweak colors/sizes easily via CSS variables */
+.mesh-bg {
+  --mesh-color-1: #718be9;     /* violet */
+  --mesh-color-2: #06b6d4;     /* cyan */
+  --mesh-size: 60vmax;         /* circle diameter */
+  --mesh-blur: 80px;           /* softness */
+  --mesh-tilt: -8deg;          /* overall tilt */
+  --mesh-opacity: 0.55;        /* intensity */
+}
+
+.mesh-bg::before,
+.mesh-bg::after {
+  content: "";
+  position: absolute;
+  inset: -10%;                 /* allow blur overflow */
+  transform: rotate(var(--mesh-tilt));
+  filter: blur(var(--mesh-blur));
+  opacity: var(--mesh-opacity);
+  pointer-events: none;
+  z-index: -1;
+  will-change: transform, filter, opacity;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+}
+
+/* Left/top blob */
+.mesh-bg::before {
+  background-image:
+    radial-gradient(
+      circle var(--mesh-size) at 25% 30%,
+      var(--mesh-color-1),
+      transparent 60%
+    );
+}
+
+/* Right/bottom blob */
+.mesh-bg::after {
+  background-image:
+    radial-gradient(
+      circle var(--mesh-size) at 85% 75%,
+      var(--mesh-color-2),
+      transparent 60%
+    );
+}
+
+
+
 /* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

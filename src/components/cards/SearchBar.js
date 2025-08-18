@@ -16,7 +16,7 @@ export default function SearchBar({
   };
 
   return (
-    <div className="flex items-center justify-between gap-2 bg-white border border-gray-200 rounded-full ">
+    <div className="flex items-center justify-between w-full gap-2 bg-white border border-gray-200 rounded-full ">
       <Input
         startContent={<MagnifyingGlass className="text-gray-500" />}
         placeholder="Search..."

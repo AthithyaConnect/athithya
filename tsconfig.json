@@ -29,6 +29,6 @@
     "**/*.ts",
     "**/*.js",
     "**/*.tsx"
-  ],
+, "src/app/(general)/search/page.jsx"  ],
   "exclude": ["node_modules"]
 }
