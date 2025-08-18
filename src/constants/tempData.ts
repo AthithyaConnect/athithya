@@ -1,3 +1,53 @@
+
+
+export const invitation = {
+  image:
+    "https://img.freepik.com/free-photo/view-mountain-with-dreamy-aesthetic_23-2151700214.jpg?t=st=1755340353~exp=1755343953~hmac=f90ade31c067e3a7ca20b211254cfe3751fb3ed6b9ed4824de099ae08f1500ed&w=1480",
+  title: "Sumit’s Stay Invitation",
+  description:
+    "Experience cozy mountain living with home-cooked meals by the Rawat family in Manali.",
+  rating: 4.8,
+  reviews: 120,
+  category: "Local Home Stay",
+  location: { address: "123, Rajpur Road, Near IT Park, Dehradun" },
+  amenities: ["AC", "Wi-Fi", "Washing Machine", "Electricity"],
+  beds: "3 (1d + 2s)",
+  maxGuests: 4,
+  bedrooms: 2,
+  about: "Stay with the Rawat family in a traditional Himachali wooden home...",
+  host: {
+    name: "Sumit Rawat",
+    avatar:
+      "https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671145.jpg",
+    rating: 4.8,
+    reviews: 120,
+    hostingSince: "last 3 months",
+  },
+  offerings: [
+    "Private Room with View",
+    "Morning Chai & Local Breakfast (Optional ₹100)",
+    "Home-cooked Dinner (₹200)",
+    "Guided Walk to Waterfall (Optional)",
+    "Bonfire Experience (₹150 per guest)",
+  ],
+  rules: [
+    "No loud music after 10 PM",
+    "No smoking inside rooms",
+    "Check-in: 12:00 PM",
+    "Check-out: 11:00 AM",
+    "Respect local customs",
+  ],
+  cancellation: [
+    "Full refund before 48 hours of check-in",
+    "50% refund within 24 hours",
+    "No refund if canceled on the same day",
+  ],
+  map: "",
+  price: 2080,
+  dates: { checkIn: "Wed, 4 Sep 25", checkOut: "Sat, 7 Sep 25" },
+};
+
+
 export const hosts = [
   {
     title: "3BHK Villa with Mountain View",

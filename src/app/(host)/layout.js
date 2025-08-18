@@ -11,6 +11,7 @@ import {
   Stack,
 } from "phosphor-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { Suspense } from "react";
 
 const navItems = [
   { href: "/h/home", icon: House, label: "Home" },
@@ -88,7 +89,9 @@ export default function MainLayout({ children }) {
         </nav>
       )}
       <div className="relative flex-1 overflow-y-auto pb-14 md:pb-0">
+      <Suspense fallback={<div>Loading...</div>}>
         {children}
+      </Suspense>
       </div>{" "}
     </div>
   );
