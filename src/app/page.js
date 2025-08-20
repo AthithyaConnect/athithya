@@ -52,9 +52,9 @@ export default function MainPage() {
               variant="solid"
               className="px-6 py-2 text-black bg-white rounded-full "
               radius="full"
-              onPress={() => router.push("/comming-soon")}
+              onPress={() => router.push("/login")}
             >
-              Get Early Access
+             Login
             </Button>
           </div>
          </div>
