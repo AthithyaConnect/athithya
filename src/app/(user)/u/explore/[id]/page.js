@@ -102,20 +102,20 @@ export default function InvitationPage() {
           <div className="absolute top-0 flex justify-between w-full gap-3 p-4 ">
             <Button
               isIconOnly
-              className="w-12 h-12 border rounded-full shadow bg-black/30 border-neutral-700"
+              className="w-12 h-12 rounded-full shadow bg-black/50 backdrop-blur-sm border-neutral-700"
             >
               <ArrowLeft size={22} weight="regular" color="white" />
             </Button>
             <div className="flex gap-2 ">
               <Button
                 isIconOnly
-                className="w-12 h-12 border rounded-full shadow bg-black/30 border-neutral-700"
+                className="w-12 h-12 rounded-full shadow bg-black/50 backdrop-blur-sm border-neutral-700"
               >
                 <Heart size={22} weight="regular" color="white" />
               </Button>
               <Button
                 isIconOnly
-                className="w-12 h-12 border rounded-full shadow bg-black/30 border-neutral-700"
+                className="w-12 h-12 rounded-full shadow bg-black/50 backdrop-blur-sm border-neutral-700"
               >
                 <ShareNetwork size={22} weight="regular" color="white" />
               </Button>

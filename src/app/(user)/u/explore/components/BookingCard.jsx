@@ -1,102 +1,280 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { differenceInDays } from "date-fns";
+import {
+  Button,
+  Divider,
+  RangeCalendar,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter, useDisclosure,
+  ButtonGroup
+} from "@heroui/react";
+import { ArrowRight, Bag, Minus, Plus } from "phosphor-react";
+import { useRouter } from "next/navigation";
+import { today, getLocalTimeZone } from "@internationalized/date";
 
 export default function BookingCard() {
   const [persons, setPersons] = useState(1);
-  const [dates, setDates] = useState({
-    checkIn: null,
-    checkOut: null,
+  const [pricePerNight] = useState(1200);
+  const [daysCount, setDaysCount] = useState(2);
+  const router = useRouter();
+  const [dates, setDates] = useState({});
+
+  let [value, setValue] = React.useState({
+    start: today(getLocalTimeZone()),
+    end: today(getLocalTimeZone()).add({ weeks: 0, days: 1 }),
   });
-  const [pricePerNight] = useState(1200); // per night
-  
-  // Calculate the number of nights
+
+  const formatDate = (d) => {
+    if (!d) return "";
+    const date = d.toDate(getLocalTimeZone());
+    return date.toLocaleDateString("en-US", {
+      weekday: "short",
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  };
+
+  const handleChange = (newRange) => {
+    const start = new Date(
+      newRange.start.year,
+      newRange.start.month - 1,
+      newRange.start.day
+    );
+    const end = new Date(
+      newRange.end.year,
+      newRange.end.month - 1,
+      newRange.end.day
+    );
+    const diffDays =
+      Math.floor((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+
+    setValue(newRange);
+    setDates({
+      startDate: formatDate(newRange.start),
+      endDate: formatDate(newRange.end),
+      startDateRaw: newRange.start,
+      endDateRaw: newRange.end,
+    });
+    setDaysCount(diffDays);
+  };
+
+  const handleAddPerson = () => setPersons((prev) => prev + 1);
+  const handleRemovePerson = () => setPersons((prev) => Math.max(1, prev - 1));
+
   const nights =
-    dates.checkIn && dates.checkOut
-      ? differenceInDays(new Date(dates.checkOut), new Date(dates.checkIn))
+    dates.startDateRaw && dates.endDateRaw
+      ? differenceInDays(
+          new Date(
+            dates.endDateRaw.year,
+            dates.endDateRaw.month - 1,
+            dates.endDateRaw.day
+          ),
+          new Date(
+            dates.startDateRaw.year,
+            dates.startDateRaw.month - 1,
+            dates.startDateRaw.day
+          )
+        )
       : 0;
 
-  // Calculate the total price based on nights and number of persons
   const totalPrice = nights > 0 ? nights * pricePerNight * persons : 0;
-
-  // Handle person count
-  const handleAddPerson = () => setPersons(prev => prev + 1);
-  const handleRemovePerson = () => setPersons(prev => Math.max(1, prev - 1));
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
-    <div className="flex flex-col max-w-sm gap-6 p-6 mx-auto my-12 font-sans bg-white shadow-xl top-4 rounded-2xl">
-      
-      {/* Persons section */}
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-xl font-semibold text-gray-800">
-            Number of Guests
-          </p>
-          <p className="text-sm text-gray-500">
-            Who's joining you?
-          </p>
-        </div>
-        <div className="flex items-center gap-3">
-          <button
-            onClick={handleRemovePerson}
-            disabled={persons <= 1}
-            className="flex items-center justify-center w-8 h-8 text-gray-600 transition-colors border border-gray-300 rounded-full hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"></path></svg>
-          </button>
-          <p className="w-6 text-lg font-medium text-center">{persons}</p>
-          <button
-            onClick={handleAddPerson}
-            className="flex items-center justify-center w-8 h-8 text-gray-600 transition-colors border border-gray-300 rounded-full hover:bg-gray-100"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path></svg>
-          </button>
-        </div>
-      </div>
-
-      {/* Dates section */}
-      <div className="flex items-center justify-between gap-0 p-0">
-        <div className="relative w-1/2">
-          <label htmlFor="check-in" className="absolute text-xs font-medium text-gray-500 top-2 left-4">Check In</label>
-          <input
-            id="check-in"
-            type="date"
-            onChange={(e) =>
-              setDates((prev) => ({ ...prev, checkIn: e.target.value }))
-            }
-            className="w-full h-16 p-4 pt-6 text-sm bg-gray-100 appearance-none rounded-xl"
-          />
-        </div>
-        <div className="relative w-1/2">
-        <label htmlFor="check-out" className="absolute text-xs font-medium text-gray-500 top-2 left-4">Check Out</label>
-          <input
-            id="check-out"
-            type="date"
-            onChange={(e) =>
-              setDates((prev) => ({ ...prev, checkOut: e.target.value }))
-            }
-            className="w-full h-16 p-4 pt-6 text-sm bg-gray-100 appearance-none rounded-xl"
-          />
+    <div className="sticky flex flex-col w-full max-w-sm gap-6 p-6 mx-auto my-4 font-sans bg-white border border-gray-200 shadow-xl top-2 top-4 rounded-2xl">
+      <div className="flex flex-col justify-between gap-2">
+        <h5 className="text-lg font-medium">Add dates and guests</h5>
+        <div className="flex items-center justify-between mt-6">
+          <p className="text-sm text-gray-500">Total Guests</p>
+          <div className="flex items-center gap-2 ">
+            <Button
+              isIconOnly
+              size="sm"
+              variant="flat"
+              fullWidth={false}
+              onPress={handleRemovePerson}
+              className="w-8 h-8"
+            >
+              <Minus size={16} weight="bold" />
+            </Button>
+            <span className="text-xl font-medium text-black">
+              &nbsp;{persons}&nbsp;
+            </span>
+            <Button
+              isIconOnly
+              size="sm"
+              variant="flat"
+              fullWidth={false}
+              onPress={handleAddPerson}
+              className="w-8 h-8"
+            >
+              <Plus size={16} weight="bold" />
+            </Button>
+          </div>
         </div>
       </div>
 
-      {/* Price & Continue button */}
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-2xl font-bold text-gray-800">
-            ₹{totalPrice.toLocaleString("en-IN")}{" "}
-          </p>
-          <p className="text-sm text-gray-500">
-            {nights || 0} nights • {persons} person{persons > 1 ? "s" : ""}
-          </p>
-          <p className="text-xs text-gray-500">
-            ₹{pricePerNight}/night per person
+      <Divider />
+
+      <div>
+        <div className="flex justify-between">
+          <p className="text-sm text-gray-500">Total Days</p>
+          <p className="text-xl font-bold text-black">
+            {daysCount - 1}{" "}
+            <span className="text-sm font-normal text-gray-500">days</span>
+            &nbsp;&nbsp;
+            {daysCount - 2}{" "}
+            <span className="text-sm font-normal text-gray-500">nights</span>
           </p>
         </div>
-        <button className="px-6 py-3 font-medium text-white transition-colors bg-blue-600 rounded-full shadow-lg hover:bg-blue-700">
-          Continue
-        </button>
+
+        <div
+          onClick={onOpen}
+          className="flex items-center justify-between mt-2 text-sm text-gray-700 underline text-underline"
+        >
+          {value.start && value.end ? (
+            <>
+              <div>{formatDate(value.start)}</div>
+              <span>
+                <ArrowRight />
+              </span>
+              <div>{formatDate(value.end)}</div>
+            </>
+          ) : (
+            <div>Select a date value</div>
+          )}
+        </div>
+        <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+          <ModalContent>
+            {(onClose) => (
+              <>
+                <ModalHeader className="flex flex-col gap-1">
+                  Click on Start and End Dates
+                </ModalHeader>
+                <ModalBody>
+                  <div className="flex items-center justify-between p-2 mt-2 text-sm text-green-600 bg-green-100 border-gray-200 rounded-2xl">
+                    {value.start && value.end ? (
+                      <>
+                        <div>{formatDate(value.start)}</div>
+                        <span>
+                          <ArrowRight />
+                        </span>
+                        <div>{formatDate(value.end)}</div>
+                      </>
+                    ) : (
+                      <div>Select a date value</div>
+                    )}
+                  </div>
+                  <RangeCalendar
+                    calendarWidth={"100%"}
+                    className="border-2 border-white shadow-none"
+                    aria-label="Date (Uncontrolled)"
+                    pageBehavior=""
+                    minValue={today(getLocalTimeZone())}
+                    showMonthAndYearPickers
+                    defaultValue={value}
+                    color="primary"
+                    value={value}
+                    onChange={handleChange}
+                  />
+
+                  <ButtonGroup
+                    fullWidth
+                    className="px-3 max-w-full pb-2 pt-3 bg-content1 [&>button]:text-default-500 [&>button]:border-default-200/60"
+                    radius="full"
+                    size="sm"
+                    variant="bordered"
+                  >
+                    <Button
+                      onPress={() => {
+                        const newStart = value.start;
+                        const newEnd = newStart.add({ days: 1 });
+                        const newRange = { start: newStart, end: newEnd };
+                        handleChange(newRange);
+                        setValue(newRange);
+                      }}
+                    >
+                      1 days
+                    </Button>
+                    <Button
+                      onPress={() => {
+                        const newStart = value.start;
+                        const newEnd = newStart.add({ days: 2 });
+                        const newRange = { start: newStart, end: newEnd };
+                        handleChange(newRange);
+                        setValue(newRange);
+                      }}
+                    >
+                      2 days
+                    </Button>
+                    <Button
+                      onPress={() => {
+                        const newStart = value.start;
+                        const newEnd = newStart.add({ days: 3 });
+                        const newRange = { start: newStart, end: newEnd };
+                        handleChange(newRange);
+                        setValue(newRange);
+                      }}
+                    >
+                      3 days
+                    </Button>
+                    <Button
+                      onPress={() => {
+                        const newStart = value.start;
+                        const newEnd = newStart.add({ days: 5 });
+                        const newRange = { start: newStart, end: newEnd };
+                        handleChange(newRange);
+                        setValue(newRange);
+                      }}
+                    >
+                      5 days
+                    </Button>
+                  </ButtonGroup>
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="danger" variant="light" onPress={onClose}>
+                    Close
+                  </Button>
+                  <Button color="primary" onPress={onClose}>
+                    Save
+                  </Button>
+                </ModalFooter>
+              </>
+            )}
+          </ModalContent>
+        </Modal>
+      </div>
+        <Divider/>
+
+ <div className="flex justify-between">
+          <p className="text-sm text-gray-500">Total Amount</p>
+          <p className="text-xl font-bold text-black">
+            <span className="text-lg font-bold">₹</span>
+           {totalPrice}
+            
+          </p>
+        </div>
+      {/* payment section */}
+      <div className="flex items-center w-full gap-2" >
+         {/* <Button
+              isIconOnly
+              variant="bordered"
+              size="sm"
+              fullWidth={false}
+              onPress={handleAddPerson}
+              className="w-16 h-12 border rounded-xl"
+            >
+              <Bag size={24} weight="regular" />
+            </Button> */}
+            <Button onPress={()=>router.push('/u/cart')}  size="lg" className="w-full" variant="solid" color="primary">
+              Continue to Pay
+            </Button>
       </div>
     </div>
   );
