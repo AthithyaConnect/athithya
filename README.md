@@ -36,19 +36,19 @@ Athithya is a **Next.js** project that provides a platform for users to explore 
 
 ## 🚀 Features
 
-* 🔍 **Search** – Search bar component for querying posts.
-* 📝 **Posting** – PostCard component to view and interact with posts.
-* 💬 **Messaging** – MessageCard component for managing messages.
-* 🏡 **Hosting** – HostCard and HostList to browse and interact with hosts.
+- 🔍 **Search** – Search bar component for querying posts.
+- 📝 **Posting** – PostCard component to view and interact with posts.
+- 💬 **Messaging** – MessageCard component for managing messages.
+- 🏡 **Hosting** – HostCard and HostList to browse and interact with hosts.
 
 ---
 
 ## 🎨 UI & Styling
 
-* **Icons**: Uses [Phosphor React Icons](https://phosphoricons.com/).
-* **Colors**: Custom theme defined in `globals.css`.
-* **Fonts**: Uses `Inter Tight` from Google Fonts.
-* **Layout**: Global layout defined in `layout.js`.
+- **Icons**: Uses [Phosphor React Icons](https://phosphoricons.com/).
+- **Colors**: Custom theme defined in `globals.css`.
+- **Fonts**: Uses `Inter Tight` from Google Fonts.
+- **Layout**: Global layout defined in `layout.js`.
 
 ---
 
@@ -84,5 +84,5 @@ Please open a pull request with a clear description of your changes.
 ---
 
 ## 📄 License
+
 This project is licensed under the [MIT License](https://github.com/AthithyaConnect/athithya/blob/main/LICENSE).
- 

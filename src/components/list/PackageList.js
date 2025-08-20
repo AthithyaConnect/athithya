@@ -6,7 +6,7 @@ export default function HostList({ packages = [] }) {
     <div className="">
       <h2 className="mb-2 text-md">
         <span className="font-semibold">Complete Packages</span>{" "}
-       </h2>
+      </h2>
       <div className="overflow-x-auto">
         <div className="flex gap-3 pb-2">
           {packages.map((packageItem) => (

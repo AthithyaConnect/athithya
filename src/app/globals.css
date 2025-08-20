@@ -3,6 +3,41 @@
 @source '../../node_modules/@heroui/theme/dist*.{js,ts,jsx,tsx}';
 /* @custom-variant dark (&:is(.dark *)) */
 
+@layer utilities {
+  .full-wrapper {
+    @apply flex items-center justify-center w-full min-h-screen gap-2;
+  }
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.rainbow-border {
+  background: linear-gradient(
+    90deg,
+    #ff6666,
+    #ff9966,
+    #ffff99,
+    #99ff99,
+    #9999ff,
+    #9966cc,
+    #cc99ff,
+    #ff6666
+  );
+  background-size: 300% 300%;
+  animation: rainbow 6s linear infinite;
+}
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -19,7 +54,6 @@
   display: none;
 }
 
-
 html {
   background: #000;
   position: relative;
@@ -29,9 +63,68 @@ html {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: #0b00cd;
+  --color-secondary: #f0612e;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-intrument-serif);
 }
+
+
+/* Mesh gradient background with two blurred circles */
+.mesh-bg {
+  position: relative;
+  isolation: isolate;          /* keep effects inside */
+  background: #F3F4F6;         /* fallback/base color */
+  overflow: hidden;            /* hide blob edges */
+}
+
+/* Tweak colors/sizes easily via CSS variables */
+.mesh-bg {
+  --mesh-color-1: #718be9;     /* violet */
+  --mesh-color-2: #06b6d4;     /* cyan */
+  --mesh-size: 60vmax;         /* circle diameter */
+  --mesh-blur: 80px;           /* softness */
+  --mesh-tilt: -8deg;          /* overall tilt */
+  --mesh-opacity: 0.55;        /* intensity */
+}
+
+.mesh-bg::before,
+.mesh-bg::after {
+  content: "";
+  position: absolute;
+  inset: -10%;                 /* allow blur overflow */
+  transform: rotate(var(--mesh-tilt));
+  filter: blur(var(--mesh-blur));
+  opacity: var(--mesh-opacity);
+  pointer-events: none;
+  z-index: -1;
+  will-change: transform, filter, opacity;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+}
+
+/* Left/top blob */
+.mesh-bg::before {
+  background-image:
+    radial-gradient(
+      circle var(--mesh-size) at 25% 30%,
+      var(--mesh-color-1),
+      transparent 60%
+    );
+}
+
+/* Right/bottom blob */
+.mesh-bg::after {
+  background-image:
+    radial-gradient(
+      circle var(--mesh-size) at 85% 75%,
+      var(--mesh-color-2),
+      transparent 60%
+    );
+}
+
+
 
 /* @media (prefers-color-scheme: dark) {
   :root {

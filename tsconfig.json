@@ -1,12 +1,8 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-     "baseUrl": ".",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     },
@@ -33,9 +29,6 @@
     "**/*.ts",
     "**/*.js",
     "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ], 
-  
+, "src/app/(general)/search/page.jsx"  ],
+  "exclude": ["node_modules"]
 }

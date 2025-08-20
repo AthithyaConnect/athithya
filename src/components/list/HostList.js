@@ -12,7 +12,7 @@ export default function HostList({ hosts = [] }) {
         <div className="flex gap-3 pb-2">
           {hosts.map((host) => (
             <div key={host.title} className="min-w-[300px]">
-              <HostCard {...host} />
+              <HostCard {...host} showViewButton={false} />
             </div>
           ))}
         </div>

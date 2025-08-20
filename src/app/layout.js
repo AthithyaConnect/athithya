@@ -1,11 +1,8 @@
 import {
-  Bricolage_Grotesque,
-  Geist,
   Geist_Mono,
+  Instrument_Serif,
   Inter_Tight,
   Manrope,
-  Outfit,
-  Urbanist,
 } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
@@ -15,6 +12,12 @@ const mainFont = Inter_Tight({
   subsets: ["latin"],
   weight: ["200", "300", "400", "500", "600", "700", "800"],
   style: ["normal"],
+});
+
+const serif = Instrument_Serif({
+  variable: "--font-intrument-serif",
+  subsets: ["latin"],
+  weight: ["400"],
 });
 
 const geistMono = Geist_Mono({
@@ -31,10 +34,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${mainFont.className} ${geistMono.variable} border-x  border-gray-100 max-w-sm mx-auto w-full min-h-[100dvh]  antialiased`}
+        className={`${mainFont.className} ${geistMono.variable} ${serif.variable}    border-gray-100  mx-auto w-full min-h-[100dvh]  antialiased`}
       >
         <Providers>
-          <div className="max-w-sm mx-auto w-full min-h-[100dvh] flex flex-col">
+          <div className=" mx-auto w-full min-h-[100dvh] flex flex-col">
             {children}
           </div>
         </Providers>

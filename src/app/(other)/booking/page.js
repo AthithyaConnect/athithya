@@ -3,7 +3,7 @@
 import { Calendar, Users, CreditCard, Money, House } from "phosphor-react";
 import Image from "next/image";
 import { useState } from "react";
-import { hosts } from "@/constants";
+import { hosts } from "@/constants/tempData";
 import { Button } from "@heroui/react";
 
 export default function BookingPage() {

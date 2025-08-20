@@ -1,8 +1,11 @@
 "use client";
 import Image from "next/image";
 import clsx from "clsx";
+import { useRouter } from "next/navigation";
+import { Avatar } from "@heroui/react";
 
 export default function MessageCard({
+  id,
   avatar,
   message,
   time,
@@ -10,18 +13,20 @@ export default function MessageCard({
   isRead,
   name = "",
 }) {
+
+  const router = useRouter();
   return (
-    <div className="flex items-center justify-between py-3 border-b border-gray-100">
+    <div onClick={()=> router.push(`/u/inbox/${id}`)}  className="flex items-center justify-between py-3 border-b border-gray-100 cursor-pointer">
       {/* Left Side */}
       <div className="flex items-center gap-3">
         {/* Avatar with online dot */}
         <div className="relative w-12 h-12">
-          <Image
+    
+          <Avatar
             src={avatar}
             alt="avatar"
-            width={48}
-            height={48}
-            className="object-cover rounded-full"
+            className="absolute top-0 left-0 w-full h-full rounded-full"
+            style={{ boxShadow: "0 0 0 2px white" }}
           />
           {/* Online dot */}
           <span
